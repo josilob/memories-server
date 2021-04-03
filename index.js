@@ -5,7 +5,12 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
+const postRoutes = require('./routes/posts.js');
+
 const app = express();
+
+app.use('/posts', postRoutes);
+
 const { USERNAME, PASSWORD } = process.env;
 const CONNECTION_URL = `mongodb+srv://${USERNAME}:${PASSWORD}@cluster0.mk9uk.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 
