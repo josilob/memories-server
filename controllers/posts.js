@@ -1,5 +1,5 @@
-const getPosts = (req, res) => {
+exports.getPosts = (req, res) => {
 	res.send('THIS WORKS!');
 };
-
-exports.getPosts = getPosts;
+// export immediately instead of assigning the function and exporting it
+// exports.getPosts = getPosts;
