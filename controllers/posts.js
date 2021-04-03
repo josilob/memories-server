@@ -1,5 +1,26 @@
-exports.getPosts = (req, res) => {
-	res.send('THIS WORKS!');
-};
+const PostMessage = require('../models/postMessage');
+
 // export immediately instead of assigning the function and exporting it
 // exports.getPosts = getPosts;
+exports.getPosts = async (req, res) => {
+	try {
+		const postMessages = await PostMessage.find();
+		console.log(postMessages);
+		res.status(200).json(postMessages);
+	} catch (error) {
+		res.status(404).json({ message: error.message });
+	}
+};
+
+exports.createPost = async (req, res) => {
+	const post = req.body;
+
+	const newPost = new PostMessage(post);
+
+	try {
+		await newPost.save();
+		res.status(201).json(newPost);
+	} catch (error) {
+		res.status(409).json({ message: error.message });
+	}
+};
