@@ -1,11 +1,10 @@
-require('dotenv').config();
-const express = require('express');
-
-const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
-const cors = require('cors');
-
-const postRoutes = require('./routes/posts.js');
+import dotenv from 'dotenv';
+dotenv.config();
+import express from 'express';
+import bodyParser from 'body-parser';
+import mongoose from 'mongoose';
+import cors from 'cors';
+import postRoutes from './routes/posts.js';
 
 const app = express();
 
@@ -40,7 +39,7 @@ mongoose
 const db = mongoose.connection;
 
 db.on('error', (error) => console.log('Db connection error - ', error));
-db.on('connected', () => console.log('Db connected- ', CONNECTION_URL));
+db.on('connected', () => console.log('Db connected to "memories" collection '));
 db.on('disconnected', () => console.log('Db disconnected '));
 
 mongoose.set('useFindAndModify', false); // no warning in console

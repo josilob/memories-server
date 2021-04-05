@@ -1,8 +1,8 @@
-const PostMessage = require('../models/postMessage.js');
+import PostMessage from '../models/postMessage.js';
 
 // export immediately instead of assigning the function and exporting it
 // exports.getPosts = getPosts;
-exports.getPosts = async (req, res) => {
+export const getPosts = async (req, res) => {
 	try {
 		const postMessages = await PostMessage.find();
 		res.status(200).json(postMessages);
@@ -11,7 +11,7 @@ exports.getPosts = async (req, res) => {
 	}
 };
 
-exports.createPost = async (req, res) => {
+export const createPost = async (req, res) => {
 	const post = req.body;
 
 	const newPost = new PostMessage(post);
@@ -23,3 +23,5 @@ exports.createPost = async (req, res) => {
 		res.status(409).json({ message: error.message });
 	}
 };
+
+// module.exports = { getPosts, createPost };
