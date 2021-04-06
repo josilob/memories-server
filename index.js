@@ -39,7 +39,7 @@ mongoose
 const db = mongoose.connection;
 
 db.on('error', (error) => console.log('Db connection error - ', error));
-db.on('connected', () => console.log('Db connected to "memories" collection '));
+db.on('connected', () => console.log('Db connected'));
 db.on('disconnected', () => console.log('Db disconnected '));
 
-mongoose.set('useFindAndModify', false); // no warning in console
+mongoose.set('useFindAndModify', false); // no deprecation warning in console
