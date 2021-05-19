@@ -2,7 +2,7 @@ import jwt, { decode } from 'jsonwebtoken';
 
 const auth = async (req, res, next) => {
 	try {
-		const token = req.headers.authorization.split(' ')[1]; // token is 1st position after split
+		const token = req.headers.Authorization.split(' ')[1]; // token is 1st position after split
 		const isCustomAuth = token.length < 500; // >500 means googleAuth
 
 		let decodeData;
